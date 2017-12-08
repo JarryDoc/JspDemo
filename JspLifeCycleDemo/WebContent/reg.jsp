@@ -7,7 +7,7 @@
 <title>用户注册</title>
 </head>
 <body>
-	<form action="requst.jsp" name="request" method="post">
+	<form action="response.jsp" name="request" method="post">
 		<table>
 			<tr>
 				<td>用户名：</td>
