@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>系统登录</h1>
-	<form action="dologin.jsp?mypass=999999" name = "loginForm" method = "post">
+	<form action="dologin.jsp?" name = "loginForm" method = "post">
 		<table>
 			<tr>
 				<td>用户名：</td>

@@ -1,13 +1,13 @@
 package com.po;
 /*
- * ÓÃ»§Àà
+ * ç”¨æˆ·ç±»
  */
 public class Users {
 	
 	private String username;
 	private String password;
 	
-	//±£Áô´ËÄ¬ÈÏµÄ¹¹Ôì·½·¨
+	//æ— å‚æ„é€ æ–¹æ³•
 	public Users() {}
 	
 	public String getUsername() {

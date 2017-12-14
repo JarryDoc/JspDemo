@@ -7,39 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id = "myUsers" class = "com.po.Users" scope = "request"/>
-	<h1>setProperty动作元素</h1>
-	<hr>
-	<!-- 根据表单自动匹配所有的属性 -->
-	<%-- 
-	<jsp:setProperty name = "myUsers" property = "*"/>
-	--%>
-	<!-- 根据表单匹配部分的属性 -->
-	<%-- 
-	<jsp:setProperty property="username" name="myUsers"/>
-	--%>
-	<!-- 与表单无关，通过手工赋值给属性 -->
-	<%-- 
-	<jsp:setProperty property="username" value = "lisi" name="myUsers"/>
-	<jsp:setProperty property="password" value = "666666" name="myUsers"/>
-	--%>
-	<!-- 通过URL传参数给属性赋值 -->
-	<jsp:setProperty property="username" name="myUsers"/>
-	<jsp:setProperty property="password" name="myUsers" param = "mypass"/>
-	<!-- 使用传统的表达式方式获取用户名和密码 -->
-	<%-- 
-	用户名：<%=myUsers.getUsername() %>
-	密码：<%=myUsers.getPassword() %>
-	--%>
-	<!-- 使用getProperty方式获取用户名和密码 -->
-	用户名：<jsp:getProperty property="username" name="myUsers"/><br>
-	密码：<jsp:getProperty property="password" name="myUsers"/><br><br>
 	
-	
-	<a href = "testScope.jsp">测试javaBean的四个作用域范围</a>
 	<%
-		request.getRequestDispatcher("testScope.jsp").forward(request, response);
+		request.setCharacterEncoding("utf-8");
 	%>
+
+	<jsp:useBean id = "loginUser" class = "com.po.Users" scope = "page"/>
+	<jsp:useBean id="userDao" class="com.dao.UserDao" scope="page"></jsp:useBean>
+	<jsp:setProperty property="*" name="loginUser"/>
+	
+	<%
+		if(userDao.userLogin(loginUser)){
+			session.setAttribute("loginUser", loginUser.getUsername());
+			request.getRequestDispatcher("login_success.jsp").forward(request, response);
+		}else{
+			response.sendRedirect("login_failure.jsp");
+		}
+	
+	%>
+	
+	
 	
 </body>
 </html>
